@@ -1,127 +1,90 @@
 const db = require('../index');
 
-exports.getRouteById = (req, res) => {
+exports.getProductById = (req, res) => {
 
-    let id = req.params.id
+    let { id } = req.params;
+
+    // let id = req.params.id
     console.log(id);
     const query = `
-        SELECT * FROM urls.urls 
+        SELECT * FROM camping.products
         WHERE id = ?;
     `;
 
     const placeholders = [id]
 
     db.query(query, placeholders, (err, results) => {
-        console.log(results);
+        // console.log(results);
         if (err) {
             // case #3
             res.status(500)
                 .send({
-                    message: "There was an error getting url.",
+                    message: "There was an error getting product.",
                     error: err
                 });
         } else if (results.length == 0) {
             // case #2
             res.status(404)
                 .send({
-                    message: "No url found :("
+                    message: "No product found :("
                 })
         } else {
             // case #1
             res.send({
-                url: results[0]
+                product: results[0]
             });
         }
     });
 }
-exports.getAllUrls = (req, res) => {
+
+exports.getAllProducts = (req, res) => {
+
+    let categoryItems = req.params.categoryItems;
 
     const query = `
-        SELECT * FROM urls.urls 
+        SELECT * FROM camping.products 
        
     `;
 
-    db.query(query, (err, results) => {
+    const placeholders = [categoryItems];
+
+
+    db.query(query, placeholders, (err, results) => {
         console.log(results);
         if (err) {
             // case #3
             res.status(500)
                 .send({
-                    message: "There was an error getting urls.",
+                    message: "There was an error getting products.",
                     error: err
                 });
         } else if (results.length == 0) {
             // case #2
             res.status(404)
                 .send({
-                    message: "No urls found :("
+                    message: "No products found :("
                 })
         } else {
             // case #1
             res.send({
-                urls: results
+                products: results
             });
         }
     });
 }
+exports.getProductByCategoryTents = (req, res) => {
 
-exports.createNewRoute = (req, res) => {
-
-    console.log("Test create new route function");
-
-    let { id, url } = req.body;
-    console.log(req.body)
-
-    //user input wrong
-    if (!url || !id) {
-        res.status(400).send({ message: "input wrong" }
-        );
-        return
-    }
-
-    const query = `
-        INSERT INTO urls.urls (id, url) 
-        VALUES (?, ?);
-    `
-    const placeholders = [id, url]
-
-    // tell the database to execute that script
-    db.query(query, placeholders, (err, results) => {
-        // this code will execute when the DB responds
-        // return the appropriate response to the client
-
-        console.log(results);
-
-        if (err) {
-            res.status(500)
-                .send({
-                    message: "There was an error creating long url.",
-                    error: err
-                });
-        } else {
-            res.send({
-                message: 'Your url was created sucessfully'
-            });
-        }
-    });
-}
-
-
-exports.getUsersFavoritesList = (req, res) => {
-
-    let userId = req.params.userId;
+    let categoryItems = req.params.categoryItems;
 
     // create an SQL script for the database (as a string)
+
+
     const query = `
-        SELECT bookId as id, author, title,  coverImage 
-            FROM books.list_items
-            INNER JOIN books.books 
-                ON books.list_items.bookId = books.id
-            WHERE userId = ?;
+        SELECT * FROM products
+        WHERE category = 'tent';
     `;
 
-    const placeholders = [userId];
-
+    const placeholders = [categoryItems];
 
     db.query(query, placeholders, (err, results) => {
 
@@ -130,101 +93,138 @@ exports.getUsersFavoritesList = (req, res) => {
             // case #3
             res.status(500)
                 .send({
-                    message: "There was an error getting books.",
+                    message: "There was an error getting tents.",
                     error: err
                 });
         } else if (results.length == 0) {
             // case #2
             res.status(404)
                 .send({
-                    message: "No books found :("
+                    message: "No tents found :("
                 })
         } else {
             // case #1
             res.send({
-                books: results
+                tents: results
             });
         }
     });
 }
+exports.getProductByCategorySleepingBags = (req, res) => {
 
+    let categoryItems = req.params.categoryItems;
 
-exports.updateBook = (req, res) => {
+    // create an SQL script for the database (as a string)
 
-    let { id, title, author, coverImage } = req.body;
-    //if title, author or coverImage was not defined its an error e.g user input wrong
-    if (!id || !title || !author || !coverImage) {
-        res.status(400).send({ message: "could not create book, need id" }
-        );
-        return
-    }
-    id = Number(id);
-    const query = `
-    UPDATE books.books 
-    SET 
-        title = ?, 
-        author =?,
-        coverImage = ? 
-        WHERE (id = ?)
-`
-    const placeholders = [title, author, coverImage, id]
-
-    // tell the database to execute that script
-    db.query(query, placeholders, (err, results) => {
-        // this code will execute when the DB responds
-        // return the appropriate response to the client
-
-        console.log(results);
-
-        if (err) {
-            res.status(500)
-                .send({
-                    message: "There was an error updating your book",
-                    error: err
-                });
-        } else {
-            res.send({
-                message: 'Your book was updated sucessfully'
-            });
-        }
-    });
-}
-
-exports.deleteBookById = (req, res) => {
-
-    let { id } = req.params;
-    //or let id= req.params.id
 
     const query = `
-    DELETE FROM books.books WHERE (id = ?);
-`
-    const placeholders = [id];
+        SELECT * FROM products
+        WHERE category = 'sleeping-bag';
+    `;
 
-    // tell the database to execute that script
+    const placeholders = [categoryItems];
+
     db.query(query, placeholders, (err, results) => {
-        // this code will execute when the DB responds
-        // return the appropriate response to the client
 
-        console.log(results);
 
         if (err) {
+            // case #3
             res.status(500)
                 .send({
-                    message: "There was an error deleting your book",
+                    message: "There was an error getting sleeping-bags.",
                     error: err
                 });
-        } else if (results.affectedRows === 0) {
+        } else if (results.length == 0) {
             // case #2
             res.status(404)
                 .send({
-                    message: "No books deleted :("
+                    message: "No sleeping-bags found :("
                 })
-        }
-        else {
-            console.log(results);
+        } else {
+            // case #1
             res.send({
-                message: 'Your book was deleted sucessfully'
+                sleepingbags: results
             });
         }
     });
 }
+exports.getProductByCategoryBackPacks = (req, res) => {
+
+    let categoryItems = req.params.categoryItems;
+
+    // create an SQL script for the database (as a string)
+
+
+    const query = `
+        SELECT * FROM products
+        WHERE category = 'backpack';
+    `;
+
+    const placeholders = [categoryItems];
+
+    db.query(query, placeholders, (err, results) => {
+
+
+        if (err) {
+            // case #3
+            res.status(500)
+                .send({
+                    message: "There was an error getting backpacks.",
+                    error: err
+                });
+        } else if (results.length == 0) {
+            // case #2
+            res.status(404)
+                .send({
+                    message: "No backpacks found :("
+                })
+        } else {
+            // case #1
+            res.send({
+                backpacks: results
+            });
+        }
+    });
+}
+exports.getProductByCategoryAccesories = (req, res) => {
+
+    let categoryItems = req.params.categoryItems;
+
+    // create an SQL script for the database (as a string)
+
+
+    const query = `
+        SELECT * FROM products
+        WHERE category = 'accesories';
+    `;
+
+    const placeholders = [categoryItems];
+
+    db.query(query, placeholders, (err, results) => {
+
+
+        if (err) {
+            // case #3
+            res.status(500)
+                .send({
+                    message: "There was an error getting accessories.",
+                    error: err
+                });
+        } else if (results.length == 0) {
+            // case #2
+            res.status(404)
+                .send({
+                    message: "No accessories found :("
+                })
+        } else {
+            // case #1
+            res.send({
+                accessories: results
+            });
+        }
+    });
+}
+
+
+
+

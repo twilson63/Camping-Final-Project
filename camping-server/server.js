@@ -3,6 +3,7 @@
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const express = require('express')
+const jwt = require('jsonwebtoken')
 
 
 // require("dotenv").config();
@@ -19,7 +20,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 require("./app/index");
 require('./app/routes/products.routes')(app);
+require('./app/routes/transactions.routes')(app);
 require('./app/routes/users.routes')(app);
+require('./app/routes/cartitems.routes')(app);
 
 // require('./app/routes/users.routes')(app);
 
