@@ -5,7 +5,7 @@ import { useLocalStorage } from '../services/localStorage.service';
 
 
 
-export default function ProductCard({ id, name, price, brand, color, style, description, image, rating, quantity, product_id, customer_id, total }) {
+export default function ProductPageCard({ id, name, price, brand, color, style, description, image, rating, quantity, product_id, customer_id, total }) {
     const http = useAxios();
     const ls = useLocalStorage();
     let user = ls.getUser();
@@ -42,10 +42,10 @@ export default function ProductCard({ id, name, price, brand, color, style, desc
                 {/* <h4 className='description'>{description}</h4> */}
 
                 <button
-                    onClick={user ? addItemToCart : requestUserLogin}
+                    onClick={addItemToCart}
                     className='add-button'
                 >
-                    <span> Add to Cart</span>
+                    <span> Add to Cartasdsfgd</span>
                 </button>
             </div>
         </div>

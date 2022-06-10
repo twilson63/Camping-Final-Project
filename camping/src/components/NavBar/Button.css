@@ -1,6 +1,7 @@
 :root {
 
-    --primary: #3acbf7;
+    --primary: rgba(73, 63, 252, 1);
+    ;
 }
 
 .btn {
@@ -10,15 +11,17 @@
     outline: none;
     border: none;
     cursor: pointer;
+    color: #fff;
+    font-size: 18px;
 }
 
 .btn:hover {
     padding: 8px 20px;
     transition: all 0.3s ease-out;
-    background: #fff;
-    color: #6568f4;
-    transition: 250ms;
-
+    background: #ff7c55;
+    color: rgba(73, 63, 252, 1);
+    ;
+    transition: 500ms;
 }
 
 .btn--primary {

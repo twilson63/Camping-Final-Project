@@ -5,23 +5,13 @@ const db = require('../index');
 
 
 exports.addItemToCart = (req, res) => {
-
+    // test
     let { userId, itemId, itemPrice } = req.body;
 
     if (!userId || !itemId || !itemPrice) {
         res.status(400)
             .send({
-                message: "id, customer_id, product_id, quantity, and total must be defined",
-                data: req.body
-            });
-        return;
-    }
-
-
-    if (!itemId || !userId || !itemPrice) {
-        res.status(400)
-            .send({
-                message: "user id and product id must be defined",
+                message: "user id and product id and  price must be defined",
                 data: req.body
             });
         return;

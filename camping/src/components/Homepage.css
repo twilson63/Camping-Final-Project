@@ -1,0 +1,51 @@
+.homepage-container {
+    height: 100vh;
+    background-color: #ff7c55;
+}
+
+
+.links-flex-container {
+
+    display: flex;
+    justify-content: center;
+    border: solid black;
+    /* flex-direction: row; */
+    flex-wrap: wrap;
+    align-items: center;
+    height: fit-content;
+    margin-right: 0;
+    margin-top: 25%;
+
+}
+
+.links-flex-container>div {
+    background-color: rgba(73, 63, 252, 1);
+    /* background-color: #ff7c55; */
+    width: 10px;
+    margin: 1em;
+    text-align: center;
+    align-items: center;
+    height: fit-content;
+    padding: .5em;
+
+    width: fit-content;
+
+    border-radius: 8px;
+
+}
+
+.links-flex-container .tent-icon,
+.sleeping-icon,
+.hiking-icon,
+.accessories-icon {
+    color: #fff;
+}
+
+.Button:hover {
+    padding: 8px 20px;
+    transition: all 0.3s ease-out;
+    background: #fff;
+    color: #6568f4;
+    transition: 250ms;
+
+}

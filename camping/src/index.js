@@ -4,8 +4,15 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import './index.css';
 import App from './App';
 import NavBar from './components/NavBar/NavBar';
+// import Tents from './components/Tents'
+import Backpacks from './components/Backpacks'
+import Tents from './components/Tents'
+import Sleepingbags from './components/Sleepingbags'
+import Accessories from './components/Accessories'
 import Homepage from './components/Homepage';
 import reportWebVitals from './reportWebVitals';
+import ProductPage from './components/ProductPage';
+import ShoppingCart from './components/ShoppingCart'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,6 +22,13 @@ root.render(
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/products" element={<App />} />
+        <Route path="/cart" element={<ShoppingCart />} />
+        {/* <Route path="/tents" element={<Tents />} /> */}
+        <Route path="/backpacks" element={<Backpacks />} />
+        <Route path="/sleepingbags" element={<Sleepingbags />} />
+        <Route path="/products/:category" element={<ProductPage />} />
+
+        <Route path="/accessories" element={<Accessories />} />
 
       </Routes>
     </BrowserRouter>

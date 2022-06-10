@@ -225,6 +225,45 @@ exports.getProductByCategoryAccesories = (req, res) => {
     });
 }
 
+exports.getProductByCategory = (req, res) => {
+
+    let category = req.params.category;
+
+    // create an SQL script for the database (as a string)
+
+
+    const query = `
+        SELECT * FROM products
+        WHERE category = ?;
+    `;
+
+    const placeholders = [category];
+
+    db.query(query, placeholders, (err, results) => {
+
+
+        if (err) {
+            // case #3
+            res.status(500)
+                .send({
+                    message: "There was an error getting " `${category}`,
+                    error: err
+                });
+        } else if (results.length == 0) {
+            // case #2
+            res.status(404)
+                .send({
+                    message: "No accessories found :("
+                })
+        } else {
+            // case #1
+            res.send({
+                products: results
+            });
+        }
+    });
+}
+
 
 
 

@@ -5,12 +5,13 @@ import { useLocalStorage } from '../services/localStorage.service';
 
 
 
-export default function ProductCard({ id, name, price, brand, color, style, description, image, rating, quantity, product_id, customer_id, total }) {
+export default function TentProductCard({ id, name, price, brand, color, style, description, image, rating, quantity, product_id, customer_id, total }) {
     const http = useAxios();
     const ls = useLocalStorage();
     let user = ls.getUser();
 
     function addItemToCart() {
+        console.log('y no work')
         if (user) {
             http.addItemToCart(user.id, id, price)
                 .then(results => {
@@ -32,7 +33,7 @@ export default function ProductCard({ id, name, price, brand, color, style, desc
 
 
     return (
-        <div className='product-card'>
+        <div className='tent-product-card'>
 
             <img className='image' src={image} />
             <div className='product-info'>
@@ -42,10 +43,10 @@ export default function ProductCard({ id, name, price, brand, color, style, desc
                 {/* <h4 className='description'>{description}</h4> */}
 
                 <button
-                    onClick={user ? addItemToCart : requestUserLogin}
+                    onClick={addItemToCart}
                     className='add-button'
                 >
-                    <span> Add to Cart</span>
+                    <span> Add to Cartgdt</span>
                 </button>
             </div>
         </div>

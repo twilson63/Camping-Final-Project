@@ -1,15 +1,21 @@
 import logo from './logo.svg';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, createContext } from 'react'
 import { useAxios } from './services/axios.service'
+import { useLocalStorage } from './services/localStorage.service'
 import './components/NavBar/NavBar.css'
-
+import './App.css'
 import CampingProductCard from './components/CampingProductCard';
 import { BrowserRouter } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 
+export const Context = createContext();
+
 function App() {
 
   const [products, setProducts] = useState([])
+  const ls = useLocalStorage();
+  let user = ls.getUser();
+
   const http = useAxios();
 
   function getAllProducts() {
@@ -30,22 +36,18 @@ function App() {
   return (
 
     <div className="App">
+      <h1 className='header'>"Let's Go Camping!!! </h1>
 
-      <div>
+      <div className='products-container'>
 
-
-        <h1>App</h1>
-
-        <>
-          {products.map(({ id, brand, name, category, size }) => (
-            <p key={id}>  Product Info = {brand} {category} in a {size} size. and Id: {id}</p>
-          ))}
-        </>
-
+        {products.map(product => <CampingProductCard key={product.id} {...product} />)}
       </div>
 
-
+      {/* array.map data => cards */}
     </div>
+
+
+
   );
 }
 

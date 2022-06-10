@@ -1,3 +1,6 @@
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 export const MenuItems = [
 
     {
@@ -19,8 +22,8 @@ export const MenuItems = [
     },
 
     {
-        title: 'Cart',
-        url: '#',
+        title: <FontAwesomeIcon icon={faShoppingCart} size="lg" />,
+        url: '/cart',
         cName: 'nav-links'
 
     }
