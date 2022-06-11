@@ -4,6 +4,7 @@ const saltRounds = 10;
 const jwt = require('jsonwebtoken')
 const { v4: uuid } = require('uuid')
 
+
 // exports.getUserById = (req, res) => {
 //     res.send('Method not implemented');
 // }
@@ -114,11 +115,10 @@ exports.createNewUser = async (req, res) => {
 
         if (err) {
             if (err.errno === 1062) {
+
                 res.status(400).send({
-
                     error: err,
-                    message: 'That email already exists'
-
+                    message: 'That email already exists',
                 })
 
             } else {
@@ -132,13 +132,13 @@ exports.createNewUser = async (req, res) => {
 
         }
         else {
-            //success
+            //success -  should i send a res.send message here?;
             this.login(req, res)
         }
 
     });
 
-    // res.send('Method not implemented');
+    // should i send a res.send message here?;
 }
 
 // res.send('Method not i

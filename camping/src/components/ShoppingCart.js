@@ -1,19 +1,19 @@
-import { useApi } from '../services/axios.service'
+import { useAxios } from '../services/axios.service'
+
+
 import { useNavigate } from "react-router-dom";
 import './ShoppingCart.css'
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from '../services/localStorage.service';
-import { useAxios } from '../services/axios.service'
 
 export default function ShoppingCart() {
+
     const http = useAxios();
     const ls = useLocalStorage();
     const navigate = useNavigate();
-
+    let user = ls.getUser();
 
     const [cartItems, setCartItems] = useState([]);
-
-    let user = ls.getUser();
 
     let subTotal = calculateTotalPrice(cartItems);
     const tax = .07 * subTotal;
@@ -24,7 +24,8 @@ export default function ShoppingCart() {
         if (user) {
             http.getUserShoppingCartById(user.id)
                 .then((response) => {
-                    setCartItems(response?.data?.watches);
+                    console.log(response.data);
+                    setCartItems(response?.data.cart);
                 })
                 .catch(() => {
                     console.log("error getting shopping cart")

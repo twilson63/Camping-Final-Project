@@ -13,6 +13,8 @@ import Homepage from './components/Homepage';
 import reportWebVitals from './reportWebVitals';
 import ProductPage from './components/ProductPage';
 import ShoppingCart from './components/ShoppingCart'
+import SignUpPage from './components/login/SignUpPage'
+import LogInPage from './components/login/LogInPage'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,6 +26,9 @@ root.render(
         <Route path="/products" element={<App />} />
         <Route path="/cart" element={<ShoppingCart />} />
         {/* <Route path="/tents" element={<Tents />} /> */}
+        <Route path="/login" element={<LogInPage />} />
+
+        <Route path="/signup" element={<SignUpPage />} />
         <Route path="/backpacks" element={<Backpacks />} />
         <Route path="/sleepingbags" element={<Sleepingbags />} />
         <Route path="/products/:category" element={<ProductPage />} />

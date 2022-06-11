@@ -4,8 +4,8 @@ import { useAxios } from '../services/axios.service'
 import { useLocalStorage } from '../services//localStorage.service'
 import { BrowserRouter } from 'react-router-dom';
 // import './NavBar/NavBar'
-import './TentProductCard.css'
-import TentProductCard from './TentProductCard';
+import './ProductCard.css'
+import ProductCard from './ProductCard';
 import NavBar from './NavBar/NavBar';
 
 
@@ -41,11 +41,11 @@ function Tents() {
     return (
 
         <div className="tents">
-            <h1 className='header'>"Let's Go Camping!!! </h1>
+            <h1 className='header'>"Let's Go Camping!!!!!!</h1>
 
             <div className='products-container'>
 
-                {tents.map(tent => <TentProductCard key={tent.id} {...tent} />)}
+                {tents.map(tent => <ProductCard key={tent.id} {...tent} />)}
             </div>
 
             {/* array.map data => cards */}

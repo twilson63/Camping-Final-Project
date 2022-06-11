@@ -35,6 +35,13 @@ exports.addItemToCart = (req, res) => {
                 INSERT INTO cart_items (customer_id, product_id, quantity, total)
                     VALUES ( ?, ?, 1, ?);
             `;
+
+            // this is code for arc to get a good Response{
+            //     "userId": "christest",
+            //     "itemId": "dbf0c0a4-e810-11ec-902c-ef6a451bb744",
+            //     "quantity": "1",
+            //     "itemPrice": "3"
+
             const placeholders = [userId, itemId, itemPrice];
 
             db.query(query, placeholders, (err, results) => {

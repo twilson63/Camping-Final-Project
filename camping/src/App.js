@@ -4,7 +4,7 @@ import { useAxios } from './services/axios.service'
 import { useLocalStorage } from './services/localStorage.service'
 import './components/NavBar/NavBar.css'
 import './App.css'
-import CampingProductCard from './components/CampingProductCard';
+import ProductCard from './components/ProductCard';
 import { BrowserRouter } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 
@@ -36,11 +36,11 @@ function App() {
   return (
 
     <div className="App">
-      <h1 className='header'>"Let's Go Camping!!! </h1>
+      <h1 className='header'>"Let's Go Camping???</h1>
 
       <div className='products-container'>
 
-        {products.map(product => <CampingProductCard key={product.id} {...product} />)}
+        {products.map(product => <ProductCard key={product.id} {...product} />)}
       </div>
 
       {/* array.map data => cards */}

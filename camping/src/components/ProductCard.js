@@ -11,7 +11,8 @@ export default function TentProductCard({ id, name, price, brand, color, style, 
     let user = ls.getUser();
 
     function addItemToCart() {
-        console.log('y no work')
+        // if (user)
+        //     console.log('y no work')
         if (user) {
             http.addItemToCart(user.id, id, price)
                 .then(results => {
@@ -40,13 +41,13 @@ export default function TentProductCard({ id, name, price, brand, color, style, 
                 <h4 className='product-name'>{name}</h4>
                 <h4 className='brand'>{brand}</h4>
                 <h4 className='price'>${price}</h4>
-                {/* <h4 className='description'>{description}</h4> */}
+                <h4 className='description'>{description}</h4>
 
                 <button
                     onClick={addItemToCart}
                     className='add-button'
                 >
-                    <span> Add to Cartgdt</span>
+                    <span> Add to test</span>
                 </button>
             </div>
         </div>

@@ -39,7 +39,7 @@ export default function ProductPageCard({ id, name, price, brand, color, style, 
                 <h4 className='product-name'>{name}</h4>
                 <h4 className='brand'>{brand}</h4>
                 <h4 className='price'>${price}</h4>
-                {/* <h4 className='description'>{description}</h4> */}
+                <h4 className='description'>{description}</h4>
 
                 <button
                     onClick={addItemToCart}
