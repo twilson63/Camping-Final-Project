@@ -44,8 +44,20 @@ function decreaseQtyInCart(itemId, userId) {
 
 function increaseQtyInCart(itemId, userId) {
     return axios.put(`${URL}/carts/increase`, { itemId, userId })
+
 }
 
+// product specific service functions
+function getItemsPurchasedByTransactionId(transactionId) {
+    return axios.get(`${URL}/transactions/${transactionId}/items`);
+}
+function getTransactionById(transactionId) {
+    return axios.get(`${URL}/transactions/${transactionId}`);
+
+}
+function createTransaction(userId, total, products) {
+    return axios.post(`${URL}/transactions`, { userId, total, products });
+}
 
 const api = {
 
@@ -58,7 +70,10 @@ const api = {
     createNewUser,
     login,
     decreaseQtyInCart,
-    increaseQtyInCart
+    increaseQtyInCart,
+    getItemsPurchasedByTransactionId,
+    getTransactionById,
+    createTransaction
     // deleteAccount,
 
 

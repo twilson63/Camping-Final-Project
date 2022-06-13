@@ -1,6 +1,7 @@
 :root {
 
-    --primary: rgba(73, 63, 252, 1);
+    --primary: #08055D;
+    ;
     ;
 }
 
@@ -18,8 +19,8 @@
 .btn:hover {
     padding: 8px 20px;
     transition: all 0.3s ease-out;
-    background: #ff7c55;
-    color: rgba(73, 63, 252, 1);
+    background: #5D1400;
+    color: #fff;
     ;
     transition: 500ms;
 }

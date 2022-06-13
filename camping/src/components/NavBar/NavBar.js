@@ -31,9 +31,10 @@ export default function NavBar() {
     return (
 
         <nav className=" NavBarItems">
-            <h1 className="navbar-logo">Boon<span className="faCampground" > <FontAwesomeIcon icon={faCampground} /> <span> &nbsp; Dock's </span>
-            </span></h1>
+            <Link to='/'><h1 className="navbar-logo"><span className="faCampground" > Boon &nbsp;<FontAwesomeIcon icon={faCampground} /> <span> &nbsp; Dock's </span>
+            </span></h1></Link>
 
+            {/* <Link to=‘/’>Home</Link> */}
             <div className="menu-icon" onClick={handleClick}>
 
                 {/* <span className={clicked ? <FontAwesomeIcon icon={faTimes} /> : <FontAwesomeIcon icon={faBars} />} ></span> */}

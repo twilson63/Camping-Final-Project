@@ -1,25 +1,90 @@
 .homepage-container {
     height: 100vh;
-    background-color: #ff7c55;
+    background-color: #5D1400;
+    position: relative;
 }
 
+
+/* .homepage-container img {
+    height: 100%;
+    margin: auto;
+
+} */
+
+.quote {
+    /* border: solid black; */
+    position: absolute;
+    top: 10em;
+    left: 3em;
+    flex-wrap: wrap;
+    align-items: center;
+    height: fit-content;
+    color: #fff;
+    /* background-color: #08055D; */
+    padding: 1em;
+    border-radius: 6px;
+    position: z 1;
+    z-index: 1;
+}
+
+
+
+
+.quote .btn {
+    width: 8em;
+    height: 3em;
+    background: #08055D;
+    border: 8px solid #08055D;
+    font-size: 20px;
+    border-radius: 8px;
+    ;
+}
+
+.quote .btn:hover {
+    /* padding: 1em; */
+    transition: all 0.3s ease-out;
+    background: #5D1400;
+    color: #fff;
+    ;
+    transition: 500ms;
+    border-radius: 8px;
+}
+
+
+.product-image-frame {
+    /* position: relative; */
+    /* height: 100%;
+    width: 100%; */
+    /* overflow:auto; */
+    overflow: auto;
+    text-align: right;
+    display: block;
+    /* display: inline-block; */
+    box-sizing: border-box;
+    /* border: solid black 10px; */
+    margin-left: 50%;
+    margin-right: 4em;
+    opacity: .8;
+    border-radius: 6px;
+    margin-top: 3em;
+}
 
 .links-flex-container {
 
     display: flex;
     justify-content: center;
-    border: solid black;
+    /* border: solid black; */
     /* flex-direction: row; */
     flex-wrap: wrap;
     align-items: center;
     height: fit-content;
     margin-right: 0;
-    margin-top: 25%;
+    margin-top: 2.5%;
 
 }
 
 .links-flex-container>div {
-    background-color: rgba(73, 63, 252, 1);
+    background-color: #08055D;
     /* background-color: #ff7c55; */
     width: 10px;
     margin: 1em;
@@ -41,11 +106,12 @@
     color: #fff;
 }
 
-.Button:hover {
+/* .Button:hover {
     padding: 8px 20px;
     transition: all 0.3s ease-out;
-    background: #fff;
-    color: #6568f4;
+    background: green;
+    color: red;
+    ;
     transition: 250ms;
 
-}
+} */

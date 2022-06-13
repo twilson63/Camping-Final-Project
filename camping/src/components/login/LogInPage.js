@@ -4,19 +4,26 @@ import { useAxios } from '../../services/axios.service'
 import { Link } from 'react-router-dom';
 import { useLocalStorage } from '../../services/localStorage.service';
 import '../login/LogInPage.css'
+import { faCampground } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFontAwesome } from '@fortawesome/free-solid-svg-icons';
 
 export default function LogInPage() {
 
-    return (
+    return (<div className="login-root">
         <div className="login">
-            <h2 className='header'>Time to Log In!</h2>
-            <br />
-            <LogInForm />
-            <hr />
             <Link to="/signup">
                 <button type="button">Sign Up</button>
             </Link>
-        </div>
+
+            <LogInForm />
+            <hr />
+            <h4 className="login-faCampground" ><span >Boon  &nbsp;<FontAwesomeIcon icon={faCampground} />&nbsp; Dock's</span></h4>
+
+            {/* <h3 className='header'>Boon Dock's</h3> */}
+            <br />
+        </div >
+    </div >
     )
 }
 
@@ -68,7 +75,7 @@ function LogInForm() {
         }
     }
 
-    return (
+    return (<div className="login-contianer">
         <form onSubmit={handleSubmit}>
             <label className='label'>Email:</label>
             <input type="text"
@@ -90,5 +97,6 @@ function LogInForm() {
 
             <button type="submit">Log In</button>
         </form>
+    </div>
     )
 }

@@ -1,6 +1,6 @@
 .NavBarItems {
     /* background: green; */
-    background: linear-gradient(90deg, rgb(110, 94, 254), 0%, rgba(73, 63, 252, 1)), 100%;
+    background: #08055D;
 
     height: 80px;
     display: flex;
@@ -45,9 +45,10 @@
 }
 
 .nav-links:hover {
-    background-color: #ff7c55;
+    background-color: #5D1400;
+    ;
     border-radius: 4px;
-    color: rgba(73, 63, 252, 1);
+    color: #fff;
     transition: all 500ms ease-out;
 
 }

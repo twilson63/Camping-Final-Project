@@ -41,7 +41,7 @@ function ProductPage() {
     return (
 
         <div className="tents">
-            <h1 className='header'>"Let's Go Camping!!!</h1>
+            <h1 className='header'></h1>
 
             <div className='products-container'>
 
