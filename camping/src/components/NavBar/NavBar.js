@@ -1,21 +1,27 @@
-import React, { useState } from 'react'
-import { Link, useParams, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useHistory } from 'react'
+import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFontAwesome } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { faCampground, faMountainSun } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUserXmark } from '@fortawesome/free-solid-svg-icons';
 import './NavBar.css'
 import { MenuItems } from './MenuItems';
 import { Button } from './Button';
+import { useLocalStorage } from '../../services/localStorage.service';
+
 
 
 export default function NavBar() {
-
+    const navigate = useNavigate()
     const [clicked, setClicked] = useState(false)
+    const [user, setUser] = useState({})
+    const ls = useLocalStorage();
 
-    // state = { clicked: false }
+
 
     function handleClick() {
 
@@ -27,6 +33,22 @@ export default function NavBar() {
             setClicked(false)
         }
     }
+
+    function onLogoutClicked() {
+        // unset the user in state
+        setUser(undefined);
+        // and in ls
+        ls.removeUser();
+        // then navigate to your destination
+        navigate('/login')
+        // /login
+    }
+
+    useEffect(() => {
+        setUser(ls.getUser());
+        console.log("test");
+    }, [])
+
 
     return (
 
@@ -57,9 +79,45 @@ export default function NavBar() {
 
             </ul>
 
+
+            {user && (
+                <p className="navbar-userOut"
+                    onClick={onLogoutClicked} >
+                    Log Out
+                </p>
+            )}
+
+            {user
+                ? (
+                    <p className="faUserIsLoggedIn" >
+
+                        <FontAwesomeIcon icon={faUser} color="#ffff" />
+                    </p>
+                )
+                : (
+                    <p className="navbar-userIn " >
+                        <Link to='/login' className="linkLogin">
+                            Log In
+                        </Link>
+                    </p>)
+            }
+
+
+            {/* 
+
+<Link to='/login'>
+                            <FontAwesomeIcon icon={faUser} color="#ffff" />
+                        </Link> */}
+
+            {/* 
+                <p> <Link to='/login'><h1 className="navbar-userOut"><span className="faUserLogOut" ><FontAwesomeIcon icon={faUserXmark} color="#ffff" /> <span> </span>
+                </span></h1></Link></p>} */}
+
+
             {/* <Button>Sign Up</Button> */}
 
 
         </nav >
     )
 }
+

@@ -12,12 +12,12 @@ export default function Homepage() {
     // pushed sat 11 june
 
     return (
-        <div className="homepage-container"> Homepage update  13june
+        <div className="homepage-container"> Homepage update
 
             <div>
+                <h1>Wander Often, Wonder Always</h1>
+                <h1>!!!Lets Go Camping!!!&nbsp;&nbsp;<span><Link to="/products"> <Button type="button" className="shop-button"> Shop </Button></Link></span></h1>
                 <p className="quote">
-                    <h1>Wander Often, Wonder Always</h1>
-                    <h1>!!!Lets Go Camping!!!&nbsp;&nbsp;<span><Link to="/products"> <Button type="button" className="shop-button"> Shop </Button></Link></span></h1>
                 </p>
             </div>
             <div className="product-image-frame "><img src={img} />

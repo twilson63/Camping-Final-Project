@@ -59,6 +59,13 @@ function createTransaction(userId, total, products) {
     return axios.post(`${URL}/transactions`, { userId, total, products });
 }
 
+function deleteCartItem(itemId, userId) {
+    return axios.delete(`${URL}/cartitems/${userId}/${itemId}`);
+}
+function getAllTransactionsByUserId(userId) {
+    return axios.get(`${URL}/transactions/user/${userId}`);
+}
+
 const api = {
 
     getProductById,
@@ -73,7 +80,10 @@ const api = {
     increaseQtyInCart,
     getItemsPurchasedByTransactionId,
     getTransactionById,
-    createTransaction
+    createTransaction,
+    deleteCartItem,
+    getAllTransactionsByUserId
+
     // deleteAccount,
 
 
